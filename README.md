@@ -1,11 +1,11 @@
 # Josh Sylvia Tech - AI Chatbot with RAG
 
-A modern web application featuring an AI-powered chatbot with Retrieval-Augmented Generation (RAG) capabilities, built with Express.js and optimized for deployment.
+A modern web application that talks about Josh Sylvia’s knowledge on technology featuring an AI-powered chatbot with Retrieval-Augmented Generation (RAG) capabilities, built with Express.js and optimized for deployment. Searching for josh sylvia tech is completed using Elastic Search. Tutorial provided by jobs are youtube videos, github, and a playground environment. 
 
 ## 🚀 Features
 
 ### AI Chatbot
-- **RAG System**: Context-aware responses using knowledge base retrieval
+- **RAG System**: Context-aware responses using Elastic Search retrieval
 - **Groq Integration**: Powered by Llama 3.1 8B Instant model
 - **Secure API Key Management**: Environment-based configuration
 - **Real-time Chat**: Interactive conversational interface
@@ -42,7 +42,7 @@ A modern web application featuring an AI-powered chatbot with Retrieval-Augmente
 ### AI & ML
 - **Groq API**: Llama 3.1 8B Instant model
 - **Retrieval-Augmented Generation**: Context-aware responses
-- **Knowledge Base**: Expertise documentation
+- **Elastic Search**: Expertise documentation
 - **Document Retrieval**: Semantic search functionality
 
 ## 📦 Installation

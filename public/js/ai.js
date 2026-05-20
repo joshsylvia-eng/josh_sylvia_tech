@@ -5,115 +5,27 @@ function handleKeyPress(event) {
     }
 }
 
-// RAG Knowledge Base for Josh Sylvia's Expertise
-const knowledgeBase = {
-    cybersecurity: [
-        {
-            title: "Network Security Fundamentals",
-            content: "Josh Sylvia specializes in network security architecture, including firewall configuration, intrusion detection systems, and zero-trust security models. Expert in implementing comprehensive security frameworks for enterprise environments.",
-            keywords: ["network", "security", "firewall", "intrusion", "zero-trust"]
-        },
-        {
-            title: "Cloud Security Best Practices",
-            content: "Extensive experience in securing cloud infrastructure across AWS, Azure, and GCP. Implements cloud-native security solutions, identity and access management, and compliance frameworks like SOC 2 and ISO 27001.",
-            keywords: ["cloud", "aws", "azure", "gcp", "compliance", "soc2", "iso27001"]
-        },
-        {
-            title: "Penetration Testing",
-            content: "Certified penetration tester with expertise in identifying vulnerabilities in web applications, mobile apps, and network infrastructure. Proficient in using tools like Burp Suite, Metasploit, and custom security assessment methodologies.",
-            keywords: ["penetration", "testing", "vulnerability", "burp", "metasploit"]
-        }
-    ],
-    cloud: [
-        {
-            title: "Cloud Architecture Design",
-            content: "Designs scalable, resilient cloud architectures using microservices, containerization, and serverless computing. Expert in AWS services including EC2, Lambda, RDS, and infrastructure as code with Terraform.",
-            keywords: ["architecture", "microservices", "containers", "serverless", "aws", "terraform"]
-        },
-        {
-            title: "DevOps Pipeline Implementation",
-            content: "Builds comprehensive CI/CD pipelines using Jenkins, GitLab CI, and GitHub Actions. Implements automated testing, deployment strategies, and monitoring solutions for cloud-native applications.",
-            keywords: ["devops", "cicd", "jenkins", "gitlab", "automation", "monitoring"]
-        },
-        {
-            title: "Kubernetes and Container Orchestration",
-            content: "Expert in Kubernetes deployment, management, and optimization. Designs container orchestration strategies for high-availability applications and implements service mesh architectures.",
-            keywords: ["kubernetes", "containers", "orchestration", "docker", "service-mesh"]
-        }
-    ],
-    devops: [
-        {
-            title: "Infrastructure as Code",
-            content: "Specializes in IaC using Terraform, CloudFormation, and Ansible. Creates reusable infrastructure templates and implements GitOps workflows for infrastructure management.",
-            keywords: ["iac", "terraform", "cloudformation", "ansible", "gitops"]
-        },
-        {
-            title: "Monitoring and Observability",
-            content: "Implements comprehensive monitoring solutions using Prometheus, Grafana, and ELK stack. Designs alerting strategies and creates dashboards for system health and performance metrics.",
-            keywords: ["monitoring", "observability", "prometheus", "grafana", "elk", "metrics"]
-        },
-        {
-            title: "Automation Scripting",
-            content: "Proficient in Python, Bash, and PowerShell for automation tasks. Creates custom scripts for deployment, monitoring, and maintenance of complex infrastructure.",
-            keywords: ["automation", "python", "bash", "powershell", "scripting"]
-        }
-    ],
-    ai: [
-        {
-            title: "Machine Learning Engineering",
-            content: "Builds and deploys machine learning models using TensorFlow, PyTorch, and scikit-learn. Expert in model optimization, deployment pipelines, and MLOps practices for production ML systems.",
-            keywords: ["machine learning", "tensorflow", "pytorch", "mlops", "deployment"]
-        },
-        {
-            title: "Natural Language Processing",
-            content: "Develops NLP solutions using transformers, BERT, and GPT models. Implements text classification, sentiment analysis, and custom language models for business applications.",
-            keywords: ["nlp", "transformers", "bert", "gpt", "text", "classification"]
-        },
-        {
-            title: "AI System Architecture",
-            content: "Designs scalable AI systems with focus on performance, reliability, and cost optimization. Expert in distributed computing, model serving, and AI infrastructure management.",
-            keywords: ["ai architecture", "distributed", "serving", "infrastructure", "optimization"]
-        }
-    ]
-};
-
-// Document Retrieval Function
-function retrieveRelevantDocs(userQuery) {
-    const query = userQuery.toLowerCase();
-    const relevantDocs = [];
-    
-    // Search through all categories
-    Object.values(knowledgeBase).forEach(category => {
-        category.forEach(doc => {
-            let relevanceScore = 0;
-            
-            // Calculate relevance based on keyword matches
-            doc.keywords.forEach(keyword => {
-                if (query.includes(keyword.toLowerCase())) {
-                    relevanceScore += 2;
-                }
-            });
-            
-            // Check content matches
-            doc.content.toLowerCase().split(' ').forEach(word => {
-                if (query.includes(word) && word.length > 3) {
-                    relevanceScore += 1;
-                }
-            });
-            
-            if (relevanceScore > 0) {
-                relevantDocs.push({
-                    ...doc,
-                    relevanceScore
-                });
-            }
+// Document Retrieval Function using Elastic Search API only
+async function retrieveRelevantDocs(userQuery) {
+    try {
+        const response = await fetch('/api/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ query: userQuery })
         });
-    });
-    
-    // Sort by relevance and return top 2-3 documents
-    return relevantDocs
-        .sort((a, b) => b.relevanceScore - a.relevanceScore)
-        .slice(0, 3);
+        
+        if (!response.ok) {
+            throw new Error('Search API request failed');
+        }
+        
+        const data = await response.json();
+        return data.documents || [];
+    } catch (error) {
+        console.error('Elastic Search API error:', error);
+        return [];
+    }
 }
 
 // Connect to Groq LLM using OpenAI client approach
@@ -124,8 +36,8 @@ async function getLLMResponse(userMessage) {
             return "I'm experiencing technical difficulties with the AI library, but I'm here to help with your technology questions! As Josh Sylvia's AI assistant, I bring expertise in cybersecurity, cloud architecture, and AI development to solve your technical challenges.";
         }
 
-        // RAG: Retrieve relevant documents
-        const relevantDocs = retrieveRelevantDocs(userMessage);
+        // RAG: Retrieve relevant documents from Elastic Search
+        const relevantDocs = await retrieveRelevantDocs(userMessage);
         
         // Build context-aware system prompt
         let contextInfo = '';

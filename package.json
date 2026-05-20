@@ -6,15 +6,21 @@
     },
     "scripts": {
         "start": "node server.js",
-        "build": "npm ci"
+        "build": "npm ci",
+        "deploy": "npm run build && npm start",
+        "es:rebuild": "node rebuild-es-index.js"
     },
     "dependencies": {
+        "@elastic/elasticsearch": "9.4.0",
         "body-parser": "^1.20.2",
         "compression": "^1.7.4",
         "dotenv": "^17.4.2",
         "express": "^4.18.2",
+        "mailtrap": "^3.2.0",
         "method-override": "^3.0.0",
-        "pg": "8.20.0",
-        "mailtrap": "^3.2.0"
+        "pg": "8.20.0"
+    },
+    "devDependencies": {
+        "@playwright/test": "1.60.0"
     }
 }

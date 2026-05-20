@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Sylvia Tech - Cybersecurity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/cybersecurity.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Search JavaScript - Must load before navigation -->
+    <script src="js/search-functions.js"></script>
+    
+    <!-- Navigation Component -->
+    <div id="navigation-container"></div>
+
+    <!-- Cybersecurity Hero Section -->
+    <section class="cybersecurity-hero">
+        <div class="cybersecurity-hero-content">
+            <h1 class="cybersecurity-hero-title">Cybersecurity & Compliance Framework</h1>
+            <p class="cybersecurity-hero-subtitle">
+                Comprehensive security architecture covering software engineering, compliance frameworks, and enterprise-grade risk management
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Container with Sidebar TOC -->
+    <div class="cybersecurity-container">
+        <!-- Left Sidebar - Table of Contents -->
+        <aside class="toc-sidebar">
+            <button class="toc-toggle" id="tocToggle">
+                <i class="fas fa-bars"></i> Table of Contents
+            </button>
+            <nav class="toc-nav" id="tocNav">
+                <h3 class="toc-title">Topics</h3>
+                <ul class="toc-list">
+                    <li><a href="#software-engineering" class="toc-link">Software Engineering Security</a>
+                        <ul class="toc-sublist">
+                            <li><a href="#versioning" class="toc-link">Versioning & VCS</a></li>
+                            <li><a href="#iam" class="toc-link">Identity & Access Management</a></li>
+                            <li><a href="#tls" class="toc-link">Transport Layer Security</a></li>
+                            <li><a href="#api-security" class="toc-link">API Security</a></li>
+                            <li><a href="#secure-coding" class="toc-link">Secure Coding Practices</a></li>
+                            <li><a href="#auth-authz" class="toc-link">Authentication & Authorization</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#comptia-aisec" class="toc-link">CompTIA AI Security+</a>
+                        <ul class="toc-sublist">
+                            <li><a href="#ai-security-basics" class="toc-link">AI Security Basics</a></li>
+                            <li><a href="#data-security-ai" class="toc-link">Data Security for AI</a></li>
+                            <li><a href="#model-security" class="toc-link">Model Security & Prompt Injection</a></li>
+                            <li><a href="#ai-governance" class="toc-link">AI Governance</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#cissp-compliance" class="toc-link">CISSP & Compliance</a>
+                        <ul class="toc-sublist">
+                            <li><a href="#nist-800-53" class="toc-link">NIST 800-53 Controls</a></li>
+                            <li><a href="#ccpa-gdpr" class="toc-link">CCPA & GDPR</a></li>
+                            <li><a href="#phi-pii" class="toc-link">PHI & PII Protection</a></li>
+                            <li><a href="#fisma-fedramp" class="toc-link">FISMA & FedRAMP</a></li>
+                            <li><a href="#risk-management" class="toc-link">Risk Management</a></li>
+                            <li><a href="#incident-response" class="toc-link">Incident Response</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="cybersecurity-content">
+
+            <!-- SOFTWARE ENGINEERING SECURITY FUNDAMENTALS -->
+            <section id="software-engineering" class="content-section">
+                <h2 class="section-title">Software Engineering Security Fundamentals</h2>
+                <p class="section-intro">
+                    Secure software development requires a comprehensive approach integrating security principles throughout the entire development lifecycle. This encompasses secure coding practices, version control security, access management, encryption, and robust API protection strategies.
+                </p>
+
+                <!-- Versioning & Version Control Security -->
+                <article id="versioning" class="subsection">
+                    <h3 class="subsection-title">Versioning & Version Control Security</h3>
+                    <p>
+                        Proper versioning and version control security are foundational elements of secure software development. Semantic versioning (MAJOR.MINOR.PATCH) provides clarity on compatibility changes, while secure Git practices prevent unauthorized code modifications.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Key Practices:</h4>
+                        <ul>
+                            <li>Implement signed commits and tags using GPG keys</li>
+                            <li>Enforce branch protection rules requiring code reviews before merge</li>
+                            <li>Maintain detailed commit audit logs for regulatory compliance</li>
+                            <li>Implement semantic versioning (SemVer) for clear release management</li>
+                            <li>Use automated tools to scan for exposed secrets in repositories</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://semver.org/" target="_blank" rel="noopener">Semantic Versioning 2.0.0</a></li>
+                            <li><a href="https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work" target="_blank" rel="noopener">Git - Signing Your Work</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Identity & Access Management -->
+                <article id="iam" class="subsection">
+                    <h3 class="subsection-title">Identity & Access Management (IAM)</h3>
+                    <p>
+                        IAM is critical for controlling who has access to what resources. Proper implementation prevents unauthorized access, ensures accountability, and supports compliance requirements across all systems and applications.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Core Components:</h4>
+                        <ul>
+                            <li><strong>Authentication:</strong> Verifying user identity (MFA, SSO, passwordless)</li>
+                            <li><strong>Authorization:</strong> Determining what authenticated users can do (RBAC, ABAC)</li>
+                            <li><strong>Access Control:</strong> Enforcing least privilege principle</li>
+                            <li><strong>Audit & Logging:</strong> Tracking all access events for compliance</li>
+                            <li><strong>Identity Governance:</strong> Managing user lifecycle and entitlements</li>
+                        </ul>
+                        <h4>Implementation Strategies:</h4>
+                        <ul>
+                            <li>Deploy single sign-on (SSO) with SAML or OAuth 2.0</li>
+                            <li>Implement multi-factor authentication (MFA) for all privileged access</li>
+                            <li>Use role-based access control (RBAC) with periodic access reviews</li>
+                            <li>Monitor for impossible travel patterns and anomalous logins</li>
+                            <li>Implement passwordless authentication where possible</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://www.nist.gov/publications/detail/sp-800-63b" target="_blank" rel="noopener">NIST SP 800-63B: Authentication and Lifecycle Management</a></li>
+                            <li><a href="https://owasp.org/www-community/attacks/Privilege_escalation" target="_blank" rel="noopener">OWASP - Privilege Escalation</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Transport Layer Security -->
+                <article id="tls" class="subsection">
+                    <h3 class="subsection-title">Transport Layer Security (TLS/SSL)</h3>
+                    <p>
+                        TLS is essential for protecting data in transit between clients and servers. Modern TLS implementation prevents eavesdropping, tampering, and message forgery, forming the foundation of secure communications.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Best Practices:</h4>
+                        <ul>
+                            <li>Use TLS 1.2 or higher (TLS 1.3 recommended)</li>
+                            <li>Implement strong cipher suites and disable weak algorithms</li>
+                            <li>Use certificates from trusted Certificate Authorities</li>
+                            <li>Implement certificate pinning for critical applications</li>
+                            <li>Monitor certificate expiration and automate renewal</li>
+                            <li>Enable HSTS (HTTP Strict Transport Security) headers</li>
+                        </ul>
+                        <h4>Configuration:</h4>
+                        <ul>
+                            <li>Enforce forward secrecy using ephemeral key exchange</li>
+                            <li>Disable SSLv2, SSLv3, and TLS 1.0/1.1</li>
+                            <li>Use 256-bit encryption for sensitive data</li>
+                            <li>Implement perfect forward secrecy (PFS)</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://www.nist.gov/publications/detail/sp-800-52-rev-2" target="_blank" rel="noopener">NIST SP 800-52 Rev. 2: Guidelines for TLS Implementations</a></li>
+                            <li><a href="https://tools.ietf.org/html/rfc8446" target="_blank" rel="noopener">RFC 8446: TLS 1.3</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- API Security -->
+                <article id="api-security" class="subsection">
+                    <h3 class="subsection-title">API Security</h3>
+                    <p>
+                        APIs are the backbone of modern applications and primary attack vectors. Comprehensive API security covers authentication, rate limiting, input validation, and comprehensive logging to prevent unauthorized access and exploitation.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Security Controls:</h4>
+                        <ul>
+                            <li>Implement OAuth 2.0 and OpenID Connect for API authentication</li>
+                            <li>Use API keys with strict rotation policies</li>
+                            <li>Enforce rate limiting and throttling to prevent abuse</li>
+                            <li>Validate all input using allowlist-based validation</li>
+                            <li>Implement request signing and verification</li>
+                            <li>Use API gateways for centralized security</li>
+                        </ul>
+                        <h4>OWASP Top 10 API Risks:</h4>
+                        <ul>
+                            <li>Broken Object Level Authorization (BOLA)</li>
+                            <li>Broken Authentication</li>
+                            <li>Broken Object Property Level Authorization</li>
+                            <li>Unrestricted Resource Consumption</li>
+                            <li>Broken Function Level Authorization</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener">OWASP API Security Top 10</a></li>
+                            <li><a href="https://tools.ietf.org/html/rfc6749" target="_blank" rel="noopener">RFC 6749: OAuth 2.0 Authorization Framework</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Secure Coding Practices -->
+                <article id="secure-coding" class="subsection">
+                    <h3 class="subsection-title">Secure Coding Practices</h3>
+                    <p>
+                        Secure coding prevents vulnerabilities from being introduced during development. Key practices include input validation, output encoding, secure error handling, and following secure coding standards.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Core Principles:</h4>
+                        <ul>
+                            <li>Never trust user input - validate everything</li>
+                            <li>Use parameterized queries to prevent SQL injection</li>
+                            <li>Encode output to prevent XSS attacks</li>
+                            <li>Implement proper error handling without revealing sensitive information</li>
+                            <li>Use secure logging without logging sensitive data</li>
+                            <li>Keep dependencies updated and patched</li>
+                        </ul>
+                        <h4>Common Vulnerabilities to Prevent:</h4>
+                        <ul>
+                            <li>SQL Injection</li>
+                            <li>Cross-Site Scripting (XSS)</li>
+                            <li>Cross-Site Request Forgery (CSRF)</li>
+                            <li>Command Injection</li>
+                            <li>Insecure Deserialization</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener">OWASP Top 10 Web Application Security Risks</a></li>
+                            <li><a href="https://www.securecoding.cert.org/" target="_blank" rel="noopener">CERT Secure Coding Standards</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Authentication & Authorization -->
+                <article id="auth-authz" class="subsection">
+                    <h3 class="subsection-title">Authentication & Authorization Mechanisms</h3>
+                    <p>
+                        Strong authentication and authorization mechanisms are critical for system security. These mechanisms verify user identity and control access to resources based on permissions and roles.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Authentication Methods:</h4>
+                        <ul>
+                            <li>Password-based with complexity requirements</li>
+                            <li>Multi-Factor Authentication (MFA) - required for privileged access</li>
+                            <li>Passwordless authentication (biometric, FIDO2)</li>
+                            <li>Hardware security tokens</li>
+                            <li>Single Sign-On (SSO) solutions</li>
+                        </ul>
+                        <h4>Authorization Models:</h4>
+                        <ul>
+                            <li><strong>RBAC:</strong> Role-Based Access Control - simplest and most common</li>
+                            <li><strong>ABAC:</strong> Attribute-Based Access Control - most flexible</li>
+                            <li><strong>ACL:</strong> Access Control Lists - granular file-level control</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://fidoalliance.org/" target="_blank" rel="noopener">FIDO Alliance - Authentication Standards</a></li>
+                            <li><a href="https://www.nist.gov/publications/detail/sp-800-63" target="_blank" rel="noopener">NIST SP 800-63 Digital Identity Guidelines</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <!-- COMPTIA AI SECURITY+ -->
+            <section id="comptia-aisec" class="content-section">
+                <h2 class="section-title">CompTIA AI Security+</h2>
+                <p class="section-intro">
+                    CompTIA AI Security+ certification addresses the unique security challenges posed by artificial intelligence and machine learning systems. This covers data security, model integrity, ethical AI governance, and emerging AI-specific threats.
+                </p>
+
+                <!-- AI Security Basics -->
+                <article id="ai-security-basics" class="subsection">
+                    <h3 class="subsection-title">AI Security Fundamentals</h3>
+                    <p>
+                        AI systems introduce unique security challenges distinct from traditional software. Understanding these fundamentals is essential for building secure and trustworthy AI systems.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Core Concepts:</h4>
+                        <ul>
+                            <li>Adversarial examples and attacks on ML models</li>
+                            <li>Model poisoning during training phases</li>
+                            <li>Supply chain risks in AI/ML frameworks and libraries</li>
+                            <li>Model extraction and intellectual property theft</li>
+                            <li>Backdoor attacks and trojanized models</li>
+                        </ul>
+                        <h4>Key Challenges:</h4>
+                        <ul>
+                            <li>AI models can be deceived with carefully crafted inputs</li>
+                            <li>Training data quality directly impacts security</li>
+                            <li>Black-box models lack transparency and interpretability</li>
+                            <li>Rapid evolution makes threat landscape unpredictable</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Data Security for AI -->
+                <article id="data-security-ai" class="subsection">
+                    <h3 class="subsection-title">Data Security for AI Systems</h3>
+                    <p>
+                        Data is the lifeblood of AI systems. Securing training data, protecting personally identifiable information, and ensuring data quality are critical for AI security and regulatory compliance.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Data Protection Strategies:</h4>
+                        <ul>
+                            <li>Implement data classification and inventory systems</li>
+                            <li>Encrypt data at rest and in transit</li>
+                            <li>Use data anonymization and pseudonymization techniques</li>
+                            <li>Implement differential privacy for training data</li>
+                            <li>Regular data quality and integrity assessments</li>
+                            <li>Secure data lineage tracking</li>
+                        </ul>
+                        <h4>Privacy Considerations:</h4>
+                        <ul>
+                            <li>Minimize data collection to necessary attributes only</li>
+                            <li>Implement purpose limitation controls</li>
+                            <li>Ensure right to be forgotten compliance (GDPR)</li>
+                            <li>Monitor for membership inference attacks</li>
+                            <li>Implement federated learning for distributed privacy</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://arxiv.org/abs/1902.01046" target="_blank" rel="noopener">Differential Privacy in Deep Learning</a></li>
+                            <li><a href="https://www.nist.gov/publications/detail/sp-800-188" target="_blank" rel="noopener">NIST SP 800-188: Secure AI System Development</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Model Security & Prompt Injection -->
+                <article id="model-security" class="subsection">
+                    <h3 class="subsection-title">Model Security & Prompt Injection Attacks</h3>
+                    <p>
+                        Large Language Models and generative AI systems are vulnerable to novel attacks including prompt injection, jailbreaking, and adversarial prompts. Understanding these threats is essential for secure AI deployment.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Generative AI Threats:</h4>
+                        <ul>
+                            <li><strong>Prompt Injection:</strong> Attackers inject malicious instructions into prompts to override system behavior</li>
+                            <li><strong>Jailbreaking:</strong> Techniques to bypass safety guardrails and filters</li>
+                            <li><strong>Data Exfiltration:</strong> Tricking models into revealing training data or sensitive information</li>
+                            <li><strong>Adversarial Prompts:</strong> Crafted inputs designed to produce harmful outputs</li>
+                            <li><strong>Model Poisoning:</strong> Inserting malicious data during fine-tuning phases</li>
+                        </ul>
+                        <h4>Defense Strategies:</h4>
+                        <ul>
+                            <li>Implement input filtering and validation</li>
+                            <li>Use secondary validation systems to verify model outputs</li>
+                            <li>Implement rate limiting and anomaly detection</li>
+                            <li>Maintain audit logs of all model interactions</li>
+                            <li>Regular adversarial testing and red-teaming</li>
+                            <li>Use sandboxed execution environments</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for Large Language Model Applications</a></li>
+                            <li><a href="https://arxiv.org/abs/2312.06648" target="_blank" rel="noopener">Prompt Injection Attacks on Large Language Models</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- AI Governance -->
+                <article id="ai-governance" class="subsection">
+                    <h3 class="subsection-title">AI Governance & Ethical Considerations</h3>
+                    <p>
+                        Responsible AI governance ensures systems are developed ethically, transparently, and with appropriate oversight. This includes model governance, bias detection, and explainability requirements.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Governance Framework:</h4>
+                        <ul>
+                            <li>Establish AI ethics review boards</li>
+                            <li>Document AI system purpose, capabilities, and limitations</li>
+                            <li>Implement explainability requirements (XAI/LIME)</li>
+                            <li>Regular bias audits across protected attributes</li>
+                            <li>Human-in-the-loop approval for high-stakes decisions</li>
+                            <li>Model versioning and reproducibility</li>
+                        </ul>
+                        <h4>Compliance & Accountability:</h4>
+                        <ul>
+                            <li>Document AI system decisions for regulatory compliance</li>
+                            <li>Implement right to explanation for users</li>
+                            <li>Establish liability and accountability frameworks</li>
+                            <li>Regular performance monitoring and drift detection</li>
+                            <li>Incident response procedures for model failures</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://www.nist.gov/publications/detail/ai-rmc" target="_blank" rel="noopener">NIST AI Risk Management Framework</a></li>
+                            <li><a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_21_1682" target="_blank" rel="noopener">EU AI Act Proposals</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <!-- CISSP & COMPLIANCE FRAMEWORKS -->
+            <section id="cissp-compliance" class="content-section">
+                <h2 class="section-title">CISSP & Compliance Frameworks</h2>
+                <p class="section-intro">
+                    Enterprise security governance relies on comprehensive compliance frameworks and industry standards. CISSP certification covers 8 domains of security knowledge, while regulatory frameworks like NIST, GDPR, CCPA, and HIPAA provide specific requirements for data protection, privacy, and security controls.
+                </p>
+
+                <!-- NIST 800-53 -->
+                <article id="nist-800-53" class="subsection">
+                    <h3 class="subsection-title">NIST 800-53 Security Controls</h3>
+                    <p>
+                        NIST SP 800-53 provides a comprehensive catalog of security controls for federal information systems. It is widely used across government and private sector organizations and serves as the foundation for many compliance frameworks.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Control Categories:</h4>
+                        <ul>
+                            <li><strong>Access Control (AC):</strong> Limiting access to systems and information</li>
+                            <li><strong>Identification & Authentication (IA):</strong> Verifying user identity</li>
+                            <li><strong>System & Communications Protection (SC):</strong> Protecting data in transit</li>
+                            <li><strong>Audit & Accountability (AU):</strong> Monitoring and recording security events</li>
+                            <li><strong>System Development, Production & Change Management (SA):</strong> Secure SDLC practices</li>
+                            <li><strong>Incident & Response Planning (IR):</strong> Incident detection and response</li>
+                            <li><strong>Contingency Planning (CP):</strong> Business continuity and disaster recovery</li>
+                            <li><strong>System & Information Integrity (SI):</strong> Detecting and correcting security violations</li>
+                        </ul>
+                        <h4>Implementation Approach:</h4>
+                        <ul>
+                            <li>Conduct security categorization (FIPS 199)</li>
+                            <li>Select baseline controls based on impact level</li>
+                            <li>Implement risk-based tailoring of controls</li>
+                            <li>Document security control plans</li>
+                            <li>Monitor and assess control effectiveness</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://csrc.nist.gov/publications/detail/sp/800-53/rev-5" target="_blank" rel="noopener">NIST SP 800-53 Rev. 5: Security and Privacy Controls</a></li>
+                            <li><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf" target="_blank" rel="noopener">NIST 800-53 PDF (Federal Information Systems)</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- CCPA & GDPR -->
+                <article id="ccpa-gdpr" class="subsection">
+                    <h3 class="subsection-title">CCPA & GDPR: Privacy Regulations</h3>
+                    <p>
+                        The California Consumer Privacy Act (CCPA) and General Data Protection Regulation (GDPR) are landmark privacy laws that fundamentally change how organizations collect, use, and protect personal data. Compliance is mandatory for organizations processing affected individuals' data.
+                    </p>
+                    <div class="topic-details">
+                        <h4>GDPR Key Requirements:</h4>
+                        <ul>
+                            <li>Legal basis for data processing (consent, contract, legal obligation, etc.)</li>
+                            <li>Data Protection Impact Assessment (DPIA) for high-risk processing</li>
+                            <li>Right to be forgotten - deletion of personal data</li>
+                            <li>Right to data portability - receive and transfer data</li>
+                            <li>Data breach notification within 72 hours</li>
+                            <li>Privacy by design principles in all systems</li>
+                            <li>Data Processing Agreements (DPA) with third parties</li>
+                        </ul>
+                        <h4>CCPA Key Requirements:</h4>
+                        <ul>
+                            <li>Right to know - disclose what data is collected</li>
+                            <li>Right to delete - remove personal information</li>
+                            <li>Right to opt-out - refuse data selling</li>
+                            <li>Right to non-discrimination - equal service despite privacy choices</li>
+                            <li>Vendor management and third-party audits</li>
+                            <li>Security safeguards and breach notifications</li>
+                        </ul>
+                        <h4>Enforcement & Penalties:</h4>
+                        <ul>
+                            <li>GDPR: Up to €20 million or 4% of global annual revenue</li>
+                            <li>CCPA: Up to $7,500 per intentional violation or $2,500 per violation</li>
+                            <li>Private right of action for CCPA data breaches</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://gdpr-info.eu/" target="_blank" rel="noopener">GDPR Information Portal</a></li>
+                            <li><a href="https://oag.ca.gov/privacy/ccpa" target="_blank" rel="noopener">California Attorney General - CCPA Information</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- PHI & PII -->
+                <article id="phi-pii" class="subsection">
+                    <h3 class="subsection-title">PHI & PII Protection</h3>
+                    <p>
+                        Protected Health Information (PHI) and Personally Identifiable Information (PII) require special handling and protection. Healthcare organizations must comply with HIPAA/HITECH regulations, while all organizations must protect PII to prevent identity theft and fraud.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Defining Protected Information:</h4>
+                        <ul>
+                            <li><strong>PHI:</strong> Any health information related to an individual created/received by covered entities</li>
+                            <li><strong>PII:</strong> Information that can identify an individual (SSN, DL#, email, etc.)</li>
+                            <li><strong>Sensitive PII:</strong> PII that can cause harm if disclosed (SSN, medical records, financial info)</li>
+                        </ul>
+                        <h4>HIPAA Protection Rules:</h4>
+                        <ul>
+                            <li>Administrative safeguards - security management processes</li>
+                            <li>Physical safeguards - facility access and device security</li>
+                            <li>Technical safeguards - encryption, access controls, audit logs</li>
+                            <li>Breach notification requirements</li>
+                            <li>Business Associate Agreements (BAA) with vendors</li>
+                        </ul>
+                        <h4>PII Protection Strategies:</h4>
+                        <ul>
+                            <li>Data minimization - collect only necessary information</li>
+                            <li>Encryption of PII at rest and in transit</li>
+                            <li>Role-based access control with audit logging</li>
+                            <li>De-identification and anonymization techniques</li>
+                            <li>Regular vulnerability assessments and penetration testing</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://www.hhs.gov/hipaa/" target="_blank" rel="noopener">U.S. Department of Health & Human Services - HIPAA</a></li>
+                            <li><a href="https://www.nist.gov/publications/detail/sp-800-122" target="_blank" rel="noopener">NIST SP 800-122: Guide to Protecting PII</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- FISMA & FedRAMP -->
+                <article id="fisma-fedramp" class="subsection">
+                    <h3 class="subsection-title">FISMA & FedRAMP: Federal Compliance</h3>
+                    <p>
+                        FISMA (Federal Information Security Management Act) is U.S. federal law governing federal information security. FedRAMP (Federal Risk and Authorization Management Program) is the standardized approach for federal agencies to authorize cloud services.
+                    </p>
+                    <div class="topic-details">
+                        <h4>FISMA Requirements:</h4>
+                        <ul>
+                            <li>Information security categorization per FIPS 199</li>
+                            <li>Security control selection based on NIST 800-53</li>
+                            <li>Security control assessment and authorization</li>
+                            <li>Continuous monitoring and incident response</li>
+                            <li>Annual assessment of security compliance</li>
+                            <li>Security authorization review every 3 years</li>
+                        </ul>
+                        <h4>FedRAMP Baselines:</h4>
+                        <ul>
+                            <li><strong>Low Impact:</strong> Controls for basic confidentiality/integrity</li>
+                            <li><strong>Moderate Impact:</strong> Balanced security controls for most federal systems</li>
+                            <li><strong>High Impact:</strong> Stringent controls for sensitive/classified systems</li>
+                        </ul>
+                        <h4>FedRAMP Authorization Process:</h4>
+                        <ul>
+                            <li>Assessment by authorized FedRAMP 3PAOs</li>
+                            <li>Security Assessment Report (SAR) preparation</li>
+                            <li>Plan of Action & Milestones (POA&M) for deficiencies</li>
+                            <li>JAB or Agency authorization decision</li>
+                            <li>Continuous monitoring and annual assessment</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://www.fedramp.gov/" target="_blank" rel="noopener">FedRAMP Official Website</a></li>
+                            <li><a href="https://csrc.nist.gov/projects/federal-information-security-management-act-fisma" target="_blank" rel="noopener">NIST FISMA Information</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Risk Management -->
+                <article id="risk-management" class="subsection">
+                    <h3 class="subsection-title">Enterprise Risk Management</h3>
+                    <p>
+                        Risk management is a continuous process of identifying, analyzing, and mitigating security and business risks. Effective risk management balances security controls with business needs and organizational risk tolerance.
+                    </p>
+                    <div class="topic-details">
+                        <h4>Risk Management Framework (NIST RMF):</h4>
+                        <ul>
+                            <li><strong>Prepare:</strong> Organization and risk assessment infrastructure</li>
+                            <li><strong>Categorize:</strong> Information systems and security controls</li>
+                            <li><strong>Select:</strong> Security controls based on risk assessment</li>
+                            <li><strong>Implement:</strong> Security controls and document procedures</li>
+                            <li><strong>Assess:</strong> Control effectiveness and compliance</li>
+                            <li><strong>Authorize:</strong> System authorization decisions</li>
+                            <li><strong>Monitor:</strong> Continuous control monitoring and compliance</li>
+                        </ul>
+                        <h4>Risk Assessment Methodology:</h4>
+                        <ul>
+                            <li>Threat identification and analysis</li>
+                            <li>Vulnerability assessment and scanning</li>
+                            <li>Likelihood determination (probability)</li>
+                            <li>Impact analysis (business consequences)</li>
+                            <li>Risk calculation: Risk = Likelihood × Impact</li>
+                            <li>Risk prioritization and treatment decisions</li>
+                        </ul>
+                        <h4>Risk Treatment Options:</h4>
+                        <ul>
+                            <li><strong>Mitigate:</strong> Implement controls to reduce risk</li>
+                            <li><strong>Accept:</strong> Acknowledge risk and proceed (documented)</li>
+                            <li><strong>Avoid:</strong> Discontinue activity or change approach</li>
+                            <li><strong>Transfer:</strong> Insurance or outsourcing</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://csrc.nist.gov/publications/detail/sp/800-37/rev-2" target="_blank" rel="noopener">NIST SP 800-37 Rev. 2: Risk Management Framework</a></li>
+                            <li><a href="https://www.iso.org/standard/65694.html" target="_blank" rel="noopener">ISO 31000: Risk Management</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Incident Response -->
+                <article id="incident-response" class="subsection">
+                    <h3 class="subsection-title">Incident Response & Management</h3>
+                    <p>
+                        Effective incident response minimizes damage from security breaches and reduces recovery time. A comprehensive incident response program includes preparation, detection, analysis, containment, eradication, recovery, and post-incident review.
+                    </p>
+                    <div class="topic-details">
+                        <h4>IR Lifecycle Phases:</h4>
+                        <ul>
+                            <li><strong>Preparation:</strong> Tools, processes, and team training</li>
+                            <li><strong>Detection & Analysis:</strong> Identify and classify incidents</li>
+                            <li><strong>Containment:</strong> Prevent further damage (short-term and long-term)</li>
+                            <li><strong>Eradication:</strong> Remove attack artifacts and root causes</li>
+                            <li><strong>Recovery:</strong> Restore systems to normal operations</li>
+                            <li><strong>Post-Incident:</strong> Lessons learned and process improvements</li>
+                        </ul>
+                        <h4>Incident Response Team:</h4>
+                        <ul>
+                            <li>Incident commander - coordinates response</li>
+                            <li>Security analysts - forensics and malware analysis</li>
+                            <li>System administrators - system restoration</li>
+                            <li>Network engineers - network isolation and containment</li>
+                            <li>Legal/Compliance - regulatory notifications</li>
+                            <li>Executive management - stakeholder communication</li>
+                        </ul>
+                        <h4>Communication & Notification:</h4>
+                        <ul>
+                            <li>Establish clear escalation procedures</li>
+                            <li>Notify affected customers per regulatory requirements</li>
+                            <li>Breach notification timelines (72 hours for GDPR)</li>
+                            <li>Media and public communication strategy</li>
+                        </ul>
+                        <h4>References:</h4>
+                        <ul class="reference-links">
+                            <li><a href="https://csrc.nist.gov/publications/detail/sp/800-61/rev-2" target="_blank" rel="noopener">NIST SP 800-61 Rev. 2: Computer Security IR</a></li>
+                            <li><a href="https://owasp.org/www-community/controls/Incident_Response" target="_blank" rel="noopener">OWASP Incident Response</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/cybersecurity.js"></script>
+
+    <!-- Load Navigation Component -->
+    <script>
+        async function loadNavigation() {
+            try {
+                const response = await fetch('components/navigation.html');
+                const navigationHTML = await response.text();
+                document.getElementById('navigation-container').innerHTML = navigationHTML;
+                
+                // Set active page based on current URL
+                setActiveNavigation();
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+        
+        function setActiveNavigation() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            
+            // Remove active classes
+            navLinks.forEach(link => link.classList.remove('active'));
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to current page links
+            if (currentPage === 'cybersecurity.html') {
+                document.querySelector('.nav-link[href="cybersecurity.html"]')?.classList.add('active');
+                document.querySelector('.sidebar-link[href="cybersecurity.html"]')?.classList.add('active');
+            }
+        }
+        
+        // Load navigation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNavigation();
+        });
+    </script>
+</body>
+</html>

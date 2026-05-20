@@ -3,409 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Josh Sylvia - Principal Software Engineer</title>
+    <title>Contact Josh Sylvia - Principal Software Engineer & Technology Innovator</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Search JavaScript - Must load before navigation -->
+    <script src="js/search-functions.js"></script>
+    
     <!-- Navigation Component -->
     <div id="navigation-container"></div>
     <style>
-        /* Light Blue Theme Variables */
-        :root {
-            --primary-color: #4A90E2;
-            --secondary-color: #357ABD;
-            --accent-color: #2E7CD6;
-            --primary-dark: #357ABD;
-            --primary-light: #4A90E2;
+        /* Contact Page Specific Styling Only */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
         }
 
-        /* Navigation Bar Styling */
-        .top-nav {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .contact-form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 60px;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .contact-info-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .page-title {
+            color: #6B46C1;
+            font-size: 32px;
+            margin-bottom: 10px;
         }
 
-        .brand-name {
-            font-size: 20px;
-            font-weight: 600;
+        .page-description {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
         }
 
-        .nav-menu {
-            display: flex;
-            gap: 30px;
+        .section-title {
+            color: #6B46C1;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
-        .nav-link {
-            text-decoration: none;
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
             font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            position: relative;
+            color: #333;
         }
 
-            .nav-link:hover {
-                transform: translateY(-2px);
-            }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
 
-            .nav-link.active {
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6B46C1;
+            box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.2);
+        }
 
-            .nav-toggle {
-                border: none;
-                color: white;
-                font-size: 24px;
-                cursor: pointer;
-                padding: 8px;
-                border-radius: 50%;
-                transition: background 0.3s ease;
-            }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
 
-            .nav-toggle:hover {
-                background: rgba(255, 255, 255, 0.2);
-            }
+        .submit-btn {
+            background: linear-gradient(135deg, #6B46C1, #8B5CF6);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
 
-            /* Sidebar Styling */
-            .sidebar {
-                position: fixed;
-                top: 60px;
-                left: -300px;
-                width: 300px;
-                height: calc(100vh - 60px);
-                background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-                transition: left 0.3s ease;
-                z-index: 999;
-                overflow-y: auto;
-            }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.3);
+        }
 
-            .sidebar.open {
-                left: 0;
-            }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-            .sidebar-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
 
-            .sidebar-brand {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
+        .info-item i {
+            color: #6B46C1;
+            font-size: 20px;
+            width: 30px;
+            text-align: center;
+        }
 
-            .sidebar-close {
-                background: none;
-                border: none;
-                color: white;
-                font-size: 20px;
-                cursor: pointer;
-                padding: 8px;
-                border-radius: 50%;
-                transition: background 0.3s ease;
-            }
+        .info-item .info-text h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+            font-size: 16px;
+        }
 
-            .sidebar-close:hover {
-                background: rgba(255, 255, 255, 0.2);
-            }
+        .info-item .info-text p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
 
-            .sidebar-content {
-                padding: 20px;
-            }
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
 
-            .sidebar-section {
-                margin-bottom: 30px;
-            }
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
 
-            .sidebar-title {
-                color: white;
-                font-size: 14px;
-                font-weight: 600;
-                text-transform: uppercase;
-                margin-bottom: 15px;
-                opacity: 0.9;
-            }
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
 
-            .sidebar-nav {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
+        .debug-info {
+            background: #f0f0f0;
+            border-left: 4px solid #dc3545;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
 
-            .sidebar-nav li {
-                margin-bottom: 5px;
-            }
-
-            .sidebar-link {
-                color: white;
-                text-decoration: none;
-                display: block;
-                padding: 10px 15px;
-                border-radius: 8px;
-                transition: all 0.3s ease;
-                font-weight: 500;
-            }
-
-            .sidebar-link:hover {
-                background: rgba(255, 255, 255, 0.2);
-                transform: translateX(5px);
-            }
-
-            .sidebar-link.active {
-                background: rgba(255, 255, 255, 0.3);
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            }
-
-            /* Logo Styling */
-            .logo-container img {
-                height: 40px;
-                width: auto;
-                object-fit: contain;
-            }
-
-            /* Main Content Adjustments */
-            .main-content {
-                margin-top: 60px;
-                min-height: calc(100vh - 60px);
-                background: #f8f9fa;
-            }
-
-            .content-wrapper {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 30px 20px;
-            }
-
-            /* Contact Page Specific Styling */
+        /* Responsive Design */
+        @media (max-width: 768px) {
             .contact-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 40px;
-                margin-top: 30px;
-            }
-
-            .contact-form-section {
-                background: white;
-                padding: 30px;
-                border-radius: 12px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .contact-info-section {
-                background: white;
-                padding: 30px;
-                border-radius: 12px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .page-title {
-                color: var(--primary-color);
-                font-size: 32px;
-                margin-bottom: 10px;
-            }
-
-            .page-description {
-                color: #666;
-                font-size: 16px;
-                margin-bottom: 30px;
+                font-size: 28px;
             }
 
             .section-title {
-                color: var(--primary-color);
-                font-size: 24px;
-                margin-bottom: 20px;
+                font-size: 20px;
             }
 
-            .form-group {
-                margin-bottom: 20px;
-            }
-
-            .form-label {
-                display: block;
-                margin-bottom: 8px;
-                font-weight: 600;
-                color: #333;
-            }
-
-            .form-input,
-            .form-textarea {
-                width: 100%;
-                padding: 12px;
-                border: 2px solid #e0e0e0;
-                border-radius: 8px;
+            .form-group input,
+            .form-group textarea {
                 font-size: 16px;
-                transition: border-color 0.3s ease;
-            }
-
-            .form-input:focus,
-            .form-textarea:focus {
-                outline: none;
-                border-color: var(--primary-color);
-            }
-
-            .form-textarea {
-                min-height: 150px;
-                resize: vertical;
             }
 
             .submit-btn {
-                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-                color: white;
-                border: none;
-                padding: 12px 30px;
-                border-radius: 8px;
                 font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
-
-            .submit-btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-            }
-
-            .submit-btn:disabled {
-                opacity: 0.6;
-                cursor: not-allowed;
-                transform: none;
-            }
-
-            .contact-info-item {
-                display: flex;
-                align-items: center;
-                margin-bottom: 20px;
-                color: #666;
-            }
-
-            .contact-info-item i {
-                color: var(--primary-color);
-                margin-right: 15px;
-                font-size: 20px;
-                width: 25px;
-            }
-
-            .map-container {
-                margin-top: 20px;
-                border-radius: 8px;
-                overflow: hidden;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .map-container iframe {
-                width: 100%;
-                height: 300px;
-                border: none;
-            }
-
-            .success-message {
-                background: #d4edda;
-                color: #155724;
-                padding: 15px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-                border: 1px solid #c3e6cb;
-            }
-
-            .error-message {
-                background: #f8d7da;
-                color: #721c24;
-                padding: 15px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-                border: 1px solid #f5c6cb;
-            }
-
-            .debug-info {
-                background: #f0f0f0;
-                border-left: 4px solid #007bff;
-                padding: 10px;
-                margin-top: 10px;
-                font-size: 12px;
-                border-radius: 4px;
-                color: #333;
-            }
-
-            @media (max-width: 768px) {
-                .nav-menu {
-                    display: none;
-                }
-
-                .nav-toggle {
-                    display: block;
-                }
-
-                .brand-name {
-                    font-size: 18px;
-                }
-
-                .contact-container {
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                }
-
-                .content-wrapper {
-                    padding: 20px 15px;
-                }
-
-                .page-title {
-                    font-size: 28px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .nav-container {
-                    padding: 0 15px;
-                }
-
-                .sidebar {
-                    width: 250px;
-                    left: -250px;
-                }
-
-                .content-wrapper {
-                    padding: 15px 10px;
-                }
-
-                .page-title {
-                    font-size: 24px;
-                }
-
-                .contact-form-section,
-                .contact-info-section {
-                    padding: 20px;
-                }
-            }
-        </style>
+        }
+    </style>
     </head>
     <body>
         <!-- Navigation Component -->

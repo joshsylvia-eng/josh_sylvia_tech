@@ -1,0 +1,447 @@
+/* Cybersecurity Page Styling */
+
+:root {
+    --main-font: Arial;
+    --dark-color: #270b75;
+    --light-color: #4A90E2;
+    --light-color2: #357ABD;
+    --primary-color: #4A90E2;
+    --accent-color: #FF6B6B;
+    --success-color: #28a745;
+    --border-color: #e0e0e0;
+    --text-dark: #333;
+    --text-light: #666;
+    --bg-light: #f5f5f5;
+    --sidebar-width: 280px;
+}
+
+/* Hero Section */
+.cybersecurity-hero {
+    background: linear-gradient(135deg, #270b75 0%, #4A90E2 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.cybersecurity-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cybersecurity-hero-title {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cybersecurity-hero-subtitle {
+    font-size: 1.2em;
+    opacity: 0.95;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Main Container Layout */
+.cybersecurity-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+/* TOC Sidebar */
+.toc-sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+}
+
+.toc-toggle {
+    display: none;
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.toc-toggle:hover {
+    background-color: var(--light-color2);
+}
+
+.toc-nav {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toc-title {
+    margin: 0 0 15px 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--dark-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.toc-list,
+.toc-sublist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-list > li {
+    margin: 10px 0;
+}
+
+.toc-sublist {
+    margin-left: 15px;
+    margin-top: 8px;
+    border-left: 2px solid var(--border-color);
+    padding-left: 10px;
+}
+
+.toc-sublist li {
+    margin: 6px 0;
+}
+
+.toc-link {
+    display: block;
+    color: var(--light-color);
+    text-decoration: none;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+}
+
+.toc-link:hover {
+    background-color: var(--bg-light);
+    color: var(--dark-color);
+    padding-left: 12px;
+}
+
+.toc-link.active {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    padding-left: 12px;
+}
+
+/* Content Area */
+.cybersecurity-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Content Sections */
+.content-section {
+    margin-bottom: 50px;
+    scroll-margin-top: 80px;
+}
+
+.section-title {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin: 0 0 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.section-intro {
+    font-size: 1.05em;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin: 20px 0;
+    font-style: italic;
+    padding: 15px;
+    background-color: var(--bg-light);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Subsections */
+.subsection {
+    margin: 35px 0;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    scroll-margin-top: 80px;
+    transition: box-shadow 0.3s ease;
+}
+
+.subsection:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.subsection-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.subsection-title::before {
+    content: "▶";
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.subsection > p {
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+/* Topic Details */
+.topic-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--bg-light);
+    border-radius: 5px;
+}
+
+.topic-details h4 {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin: 15px 0 10px 0;
+    margin-top: 20px;
+}
+
+.topic-details h4:first-child {
+    margin-top: 0;
+}
+
+.topic-details ul {
+    margin: 10px 0;
+    padding-left: 25px;
+}
+
+.topic-details li {
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin: 8px 0;
+}
+
+.topic-details li strong {
+    color: var(--primary-color);
+}
+
+/* Reference Links */
+.reference-links {
+    background-color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    border-left: 3px solid var(--success-color);
+}
+
+.reference-links li {
+    margin: 10px 0;
+}
+
+.reference-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.reference-links a:hover {
+    color: var(--light-color2);
+    text-decoration: underline;
+}
+
+.reference-links a::before {
+    content: "📄 ";
+    margin-right: 5px;
+}
+
+/* Scrollbar Styling */
+.toc-nav::-webkit-scrollbar {
+    width: 8px;
+}
+
+.toc-nav::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 5px;
+}
+
+.toc-nav::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+.toc-nav::-webkit-scrollbar-thumb:hover {
+    background: var(--light-color2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .cybersecurity-container {
+        gap: 20px;
+        padding: 30px 15px;
+    }
+
+    .toc-sidebar {
+        width: 240px;
+    }
+
+    .toc-nav {
+        top: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cybersecurity-hero-title {
+        font-size: 2em;
+    }
+
+    .cybersecurity-hero-subtitle {
+        font-size: 1em;
+    }
+
+    .cybersecurity-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 10px;
+    }
+
+    .toc-sidebar {
+        width: 100%;
+    }
+
+    .toc-toggle {
+        display: block;
+    }
+
+    .toc-nav {
+        display: none;
+        position: static;
+        max-height: none;
+        top: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .toc-nav.active {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .subsection {
+        padding: 18px;
+        margin: 25px 0;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+
+    .subsection-title {
+        font-size: 1.2em;
+    }
+
+    .topic-details ul {
+        padding-left: 20px;
+    }
+
+    .reference-links {
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cybersecurity-hero {
+        padding: 40px 15px;
+        margin-top: 50px;
+    }
+
+    .cybersecurity-hero-title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .cybersecurity-hero-subtitle {
+        font-size: 0.9em;
+    }
+
+    .section-title {
+        font-size: 1.3em;
+    }
+
+    .subsection-title {
+        font-size: 1.1em;
+    }
+
+    .subsection {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .topic-details {
+        padding: 12px;
+        margin-top: 15px;
+    }
+
+    .topic-details h4 {
+        font-size: 1em;
+        margin: 12px 0 8px 0;
+    }
+
+    .topic-details ul {
+        padding-left: 18px;
+        margin: 8px 0;
+    }
+
+    .topic-details li {
+        margin: 6px 0;
+        font-size: 0.95em;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .cybersecurity-hero {
+        background: var(--dark-color);
+    }
+
+    .toc-sidebar,
+    .toc-toggle {
+        display: none;
+    }
+
+    .cybersecurity-container {
+        flex-direction: column;
+    }
+
+    .subsection {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .reference-links a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}
