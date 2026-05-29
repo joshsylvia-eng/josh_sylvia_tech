@@ -16,6 +16,39 @@ const searchIndex = [
     { id: 11, title: 'Cloud Architecture', category: 'technology', url: 'index.html', description: 'AWS, Azure, and Google Cloud platform expertise', keywords: ['cloud', 'aws', 'azure', 'gcp', 'architecture', 'infrastructure', 'devops', 'devsecops'] },
     { id: 12, title: 'Database Design', category: 'technology', url: 'apis.html', description: 'PostgreSQL, MongoDB, and database optimization', keywords: ['database', 'postgresql', 'mongodb', 'sql', 'nosql', 'optimization'] },
     
+    // Programming Languages & Frameworks
+    { id: 24, title: 'Programming Languages', category: 'skill', url: 'about.html', description: 'Angular, React, C, C++, C#, Java, Kotlin, Objective-C, Perl, Python, Go, HTML, CSS, Shell, JavaScript, Swift', keywords: ['angular', 'react', 'c', 'c++', 'c#', 'java', 'kotlin', 'objective-c', 'perl', 'python', 'go', 'html', 'css', 'shell', 'javascript', 'swift', 'programming', 'languages', 'frameworks'] },
+    
+    // Operating Systems
+    { id: 25, title: 'Operating Systems', category: 'skill', url: 'about.html', description: 'Linux (RedHat/Debian), Unix, Mac, Android, iOS, Windows Server', keywords: ['linux', 'redhat', 'debian', 'unix', 'mac', 'android', 'ios', 'windows', 'server', 'operating', 'systems', 'os'] },
+    
+    // Databases
+    { id: 26, title: 'Databases', category: 'skill', url: 'about.html', description: 'SQL, MySQL, PostgreSQL, MongoDB, Elasticsearch', keywords: ['sql', 'mysql', 'postgresql', 'mongodb', 'elasticsearch', 'database', 'nosql', 'data', 'storage'] },
+    
+    // Cloud & DevOps
+    { id: 27, title: 'Cloud & DevOps', category: 'skill', url: 'about.html', description: 'AWS, Azure, Google Cloud, EC2, S3, NiFi, Kafka, Terraform, VPNs, Docker, Kubernetes, Microservices, Git, CI/CD, DevSecOps', keywords: ['aws', 'azure', 'google', 'cloud', 'ec2', 's3', 'nifi', 'kafka', 'terraform', 'vpn', 'docker', 'kubernetes', 'microservices', 'git', 'cicd', 'devsecops', 'devops', 'infrastructure', 'automation'] },
+    
+    // Computer Networking
+    { id: 28, title: 'Computer Networking', category: 'skill', url: 'about.html', description: 'OSI Model, Network Security Communication, OSPF, IGRP, EIGRP, BGP, VLAN, VRRP, InterVLAN Routing, STP, IPsec Tunneling, Load Balancers, Wireshark', keywords: ['osi', 'model', 'network', 'security', 'communication', 'ospf', 'igrp', 'eigrp', 'bgp', 'vlan', 'vrrp', 'intervlan', 'routing', 'stp', 'ipsec', 'tunneling', 'load', 'balancers', 'wireshark', 'networking', 'protocols'] },
+    
+    // Testing
+    { id: 29, title: 'Testing', category: 'skill', url: 'about.html', description: 'UI Testing, API Testing, White Box Testing, Black Box Testing, Unit Testing, Test Automation, SAST, DAST, User Acceptance Testing (UAT), Integration Testing, Regression Testing, Ansible', keywords: ['ui', 'testing', 'api', 'testing', 'white', 'box', 'black', 'box', 'unit', 'testing', 'test', 'automation', 'sast', 'dast', 'uat', 'user', 'acceptance', 'testing', 'integration', 'testing', 'regression', 'testing', 'ansible', 'qa', 'quality', 'assurance'] },
+    
+    // Software Development Lifecycle
+    { id: 30, title: 'Software Development Lifecycle', category: 'skill', url: 'about.html', description: 'SDLC, Scrum, Agile, JIRA, Confluence', keywords: ['sdlc', 'scrum', 'agile', 'jira', 'confluence', 'development', 'lifecycle', 'project', 'management', 'methodology'] },
+    
+    // Development Tools
+    { id: 31, title: 'Development Tools', category: 'skill', url: 'about.html', description: 'IntelliJ, PyCharm, StarUML, AutoCAD, PSpice, Xcode, Android Studio, Eclipse, NetBeans, Splunk, SwiftUI, Visio, Jupyter Notebook, MS Office', keywords: ['intellij', 'pycharm', 'staruml', 'autocad', 'pspice', 'xcode', 'android', 'studio', 'eclipse', 'netbeans', 'splunk', 'swiftui', 'visio', 'jupyter', 'notebook', 'ms', 'office', 'development', 'tools', 'ide'] },
+    
+    // Cloud Architecture
+    { id: 32, title: 'Cloud Architecture Models', category: 'skill', url: 'about.html', description: 'IaaS, PaaS, DaaS, SaaS, FaaS, VPC, SASE', keywords: ['iaas', 'paas', 'daas', 'saas', 'faas', 'vpc', 'sase', 'cloud', 'architecture', 'models', 'infrastructure', 'platform', 'service'] },
+    
+    // Security and Security Controls
+    { id: 33, title: 'Security and Security Controls', category: 'skill', url: 'about.html', description: 'RBAC, DAC, Gap Analysis, CVEs, Threat Modeling, Cyber Threat Intelligence, Metrics, KPIs, KPI Metrics, KPI Analysis, Log Data Analysis, API Security, Security as Code, Cloud Security, Security Testing, SOC, SOC2, FedRAMP, Web Application Security, RMF Process, Incident Response, IAM, Risk Management, PII, PHI, EDR, DLP, MDR, Change Management, Configuration Management, HIPAA, GDPR, CCPA, SLA, Root Cause Analysis, SIEM, SOAR', keywords: ['rbac', 'dac', 'gap', 'analysis', 'cves', 'threat', 'modeling', 'cyber', 'threat', 'intelligence', 'metrics', 'kpis', 'kpi', 'metrics', 'kpi', 'analysis', 'log', 'data', 'analysis', 'api', 'security', 'security', 'as', 'code', 'cloud', 'security', 'security', 'testing', 'soc', 'soc2', 'fedramp', 'web', 'application', 'security', 'rmf', 'process', 'incident', 'response', 'iam', 'risk', 'management', 'pii', 'phi', 'edr', 'dlp', 'mdr', 'change', 'management', 'configuration', 'management', 'hipaa', 'gdpr', 'ccpa', 'sla', 'root', 'cause', 'analysis', 'siem', 'soar', 'cybersecurity', 'controls', 'compliance'] },
+    
+    // Generative AI
+    { id: 34, title: 'Generative AI', category: 'skill', url: 'about.html', description: 'Windsurf, Claude, Copilot, ChatGPT, Gemini', keywords: ['windsurf', 'claude', 'copilot', 'chatgpt', 'gemini', 'generative', 'ai', 'artificial', 'intelligence', 'llm', 'language', 'model'] },
+    
     // Projects and Tools
     { id: 13, title: 'Metasploit Framework', category: 'project', url: 'tutorials.html', description: 'Penetration testing framework for security professionals', keywords: ['metasploit', 'penetration', 'testing', 'security', 'framework', 'cybersecurity'] },
     { id: 14, title: 'OSQuery Monitoring', category: 'project', url: 'tutorials.html', description: 'SQL-powered operating system instrumentation and monitoring', keywords: ['osquery', 'monitoring', 'security', 'siem', 'instrumentation', 'sql'] },
@@ -39,6 +72,42 @@ let autocompleteTimeout;
 let currentResults = [];
 let selectedIndex = -1;
 
+// Local search function
+function searchLocalIndex(searchTerm) {
+    const term = searchTerm.toLowerCase();
+    return searchIndex.filter(item => {
+        const titleMatch = item.title.toLowerCase().includes(term);
+        const descriptionMatch = item.description.toLowerCase().includes(term);
+        const keywordsMatch = item.keywords.some(keyword => keyword.toLowerCase().includes(term));
+        return titleMatch || descriptionMatch || keywordsMatch;
+    }).map(item => ({
+        ...item,
+        relevanceScore: calculateRelevanceScore(item, term)
+    })).sort((a, b) => b.relevanceScore - a.relevanceScore);
+}
+
+function calculateRelevanceScore(item, searchTerm) {
+    const term = searchTerm.toLowerCase();
+    let score = 0;
+    
+    // Title match has highest weight
+    if (item.title.toLowerCase().includes(term)) {
+        score += 10;
+    }
+    
+    // Keywords match has medium weight
+    if (item.keywords.some(keyword => keyword.toLowerCase().includes(term))) {
+        score += 5;
+    }
+    
+    // Description match has lower weight
+    if (item.description.toLowerCase().includes(term)) {
+        score += 2;
+    }
+    
+    return score;
+}
+
 // Make functions globally available
 window.handleSearchKeydown = function(event) {
     console.log('DEBUG: handleSearchKeydown called', event.key, event.target.value);
@@ -58,8 +127,17 @@ window.handleSearchKeydown = function(event) {
             event.preventDefault();
             items[selectedIndex].click();
         } else {
-            // If no item selected, perform full search
-            performSearch();
+            // If no item selected, search and navigate to first result
+            event.preventDefault();
+            const searchInput = document.getElementById('search-input');
+            const searchTerm = searchInput.value.trim();
+            
+            if (searchTerm) {
+                const results = searchLocalIndex(searchTerm);
+                if (results.length > 0) {
+                    window.location.href = results[0].url;
+                }
+            }
             closeAutocomplete();
         }
     } else if (event.key === 'Escape') {
@@ -79,7 +157,7 @@ function updateSelectedIndex(items) {
     });
 }
 
-window.handleAutocomplete = async function(event) {
+window.handleAutocomplete = function(event) {
     console.log('DEBUG: handleAutocomplete called', event.target.value);
     const searchTerm = event.target.value.trim();
     
@@ -91,30 +169,11 @@ window.handleAutocomplete = async function(event) {
         return;
     }
     
-    autocompleteTimeout = setTimeout(async () => {
-        console.log('DEBUG: Searching Elastic Search for:', searchTerm);
-        try {
-            const response = await fetch('/api/search', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ query: searchTerm })
-            });
-            
-            if (!response.ok) {
-                throw new Error('Search API request failed');
-            }
-            
-            const data = await response.json();
-            const results = data.documents || [];
-            
-            console.log('DEBUG: Found', results.length, 'results from Elastic Search');
-            displayAutocomplete(results, searchTerm);
-        } catch (error) {
-            console.error('Elastic Search API error in autocomplete:', error);
-            closeAutocomplete();
-        }
+    autocompleteTimeout = setTimeout(() => {
+        console.log('DEBUG: Searching local index for:', searchTerm);
+        const results = searchLocalIndex(searchTerm);
+        console.log('DEBUG: Found', results.length, 'results from local search');
+        displayAutocomplete(results, searchTerm);
     }, 300);
 };
 
@@ -130,13 +189,13 @@ window.displayAutocomplete = function(results, searchTerm) {
     
     const html = limitedResults.map(item => {
         const highlightedTitle = highlightText(item.title, searchTerm);
-        const highlightedContent = highlightText(item.content, searchTerm);
+        const highlightedDescription = highlightText(item.description, searchTerm);
         
         return `
-            <div class="autocomplete-item" onclick="selectAutocompleteItem('${item.title}')">
+            <div class="autocomplete-item" onclick="selectAutocompleteItem('${item.title}', '${item.url}')">
                 <div class="title">${highlightedTitle}</div>
-                <div class="category">${item.keywords ? item.keywords.join(', ') : ''}</div>
-                <div class="description">${highlightedContent}</div>
+                <div class="category">${item.category}</div>
+                <div class="description">${highlightedDescription}</div>
             </div>
         `;
     }).join('');
@@ -153,12 +212,14 @@ window.highlightText = function(text, searchTerm) {
     return text.replace(regex, '<span class="highlight">$1</span>');
 };
 
-window.selectAutocompleteItem = function(title) {
+window.selectAutocompleteItem = function(title, url) {
     const searchInput = document.getElementById('search-input');
     searchInput.value = title;
     closeAutocomplete();
-    // Optionally trigger a full search with the selected title
-    performSearch();
+    // Navigate to the URL
+    if (url) {
+        window.location.href = url;
+    }
 };
 
 window.closeAutocomplete = function() {
@@ -167,7 +228,7 @@ window.closeAutocomplete = function() {
     dropdown.innerHTML = '';
 };
 
-window.performSearch = async function() {
+window.performSearch = function() {
     const searchInput = document.getElementById('search-input');
     const searchTerm = searchInput.value.trim();
     
@@ -175,29 +236,9 @@ window.performSearch = async function() {
         return;
     }
     
-    try {
-        const response = await fetch('/api/search', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ query: searchTerm })
-        });
-        
-        if (!response.ok) {
-            throw new Error('Search API request failed');
-        }
-        
-        const data = await response.json();
-        const results = data.documents || [];
-        
-        displaySearchResults(results, searchTerm);
-        closeAutocomplete();
-    } catch (error) {
-        console.error('Elastic Search API error in performSearch:', error);
-        displaySearchResults([], searchTerm);
-        closeAutocomplete();
-    }
+    const results = searchLocalIndex(searchTerm);
+    displaySearchResults(results, searchTerm);
+    closeAutocomplete();
 };
 
 window.displaySearchResults = function(results, searchTerm) {
@@ -231,13 +272,14 @@ window.displaySearchResults = function(results, searchTerm) {
         `;
     } else {
         const resultsHtml = results.map(result => `
-            <div style="margin-bottom: 15px; padding: 15px; border: 1px solid #ddd; border-radius: 8px;">
+            <div style="margin-bottom: 15px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer;" onclick="window.location.href='${result.url}'">
                 <h4 style="color: #6B46C1; margin: 0 0 8px 0;">${result.title}</h4>
                 <div style="font-size: 12px; color: #666; margin-bottom: 8px;">
                     <span style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px; margin-right: 8px;">Score: ${result.relevanceScore ? result.relevanceScore.toFixed(2) : 'N/A'}</span>
+                    <span style="background: #e0e0e0; padding: 2px 6px; border-radius: 3px; margin-right: 4px;">${result.category}</span>
                     ${result.keywords ? result.keywords.map(k => `<span style="background: #e0e0e0; padding: 2px 6px; border-radius: 3px; margin-right: 4px;">${k}</span>`).join('') : ''}
                 </div>
-                <p style="color: #666; font-size: 14px; margin: 0;">${result.content}</p>
+                <p style="color: #666; font-size: 14px; margin: 0;">${result.description}</p>
             </div>
         `).join('');
         

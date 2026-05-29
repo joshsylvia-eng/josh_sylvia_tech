@@ -1,0 +1,54 @@
+.private
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+
+# Build artifacts
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vuepress/dist/
+
+# SSL certificates
+ssl/
+*.pem
+*.key
+*.crt
+*.cert
+
+# Data files
+data/
+videos/
+
+# Config files (rarely need AI assistance)
+config/
+.npmrc
+.eslintrc*
+.prettierrc*
+.tsconfig*
+babel.config*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Private files
+private/
+
+# Lock files
+*.lock
+
