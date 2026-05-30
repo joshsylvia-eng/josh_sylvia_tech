@@ -331,6 +331,21 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.cta-button.story-button {
+    background: white;
+    color: black;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 15px 35px;
+}
+
+.cta-button.story-button:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
 .cta-button:hover {
     background: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.5);
@@ -437,6 +452,20 @@ body {
     border-radius: 15px;
     margin: 40px 0;
     font-style: italic;
+}
+
+.video-container {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.story-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
 }
 
 .nanook-section {

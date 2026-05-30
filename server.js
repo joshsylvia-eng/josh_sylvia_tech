@@ -431,6 +431,208 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// Agent API endpoints for Agentic AI
+app.get('/api/groq-key', (req, res) => {
+  const apiKey = process.env.GROQ_API_KEY || 'your_groq_api_key_here';
+  res.json({ apiKey: apiKey });
+});
+
+// Ollama status check endpoint
+app.get('/api/ollama-status', (req, res) => {
+  res.json({ 
+    status: 'configured',
+    message: 'Ollama should be running on localhost:11434',
+    model: 'josh-sylvia'
+  });
+});
+
+app.post('/api/agent-search', (req, res) => {
+  try {
+    const { query } = req.body;
+    
+    // Server-side search index (duplicate of browser search index)
+    const searchIndex = [
+        // Pages
+        { id: 1, title: 'Home', category: 'page', url: 'index.html', description: 'Josh Sylvia - Principal Software Engineer & Technology Innovator homepage with CISSP certification', keywords: ['josh', 'sylvia', 'principal', 'software', 'engineer', 'technology', 'innovator', 'cissp', 'certified', 'cybersecurity', 'home', 'portfolio'] },
+        { id: 2, title: 'AI Chatbot', category: 'page', url: 'ai.html', description: 'AI-powered chatbot with OpenAI and Groq integration', keywords: ['ai', 'artificial', 'intelligence', 'chatbot', 'openai', 'groq', 'machine', 'learning', 'automation'] },
+        { id: 3, title: 'APIs', category: 'page', url: 'apis.html', description: 'REST API documentation and integration guides', keywords: ['api', 'rest', 'endpoint', 'service', 'web', 'integration', 'documentation'] },
+        { id: 4, title: 'QA', category: 'page', url: 'qa.html', description: 'Quality assurance and testing resources', keywords: ['qa', 'quality', 'assurance', 'testing', 'questions', 'answers', 'debugging'] },
+        { id: 5, title: 'Tutorials', category: 'page', url: 'tutorials.html', description: 'Video tutorials and learning resources', keywords: ['tutorial', 'guide', 'how', 'to', 'learn', 'video', 'github', 'education'] },
+        { id: 6, title: 'About', category: 'page', url: 'about.html', description: 'Professional background and experience', keywords: ['about', 'bio', 'background', 'experience', 'skills', 'career', 'resume'] },
+        { id: 7, title: 'Contact', category: 'page', url: 'contact.html', description: 'Contact information and message form', keywords: ['contact', 'email', 'message', 'reach', 'out', 'communication'] },
+        
+        // Technologies and Skills
+        { id: 8, title: 'CISSP Certification', category: 'certification', url: 'index.html', description: 'Certified Information Systems Security Professional (CISSP) - Certificate Number: 2273572', keywords: ['cissp', 'certified', 'information', 'systems', 'security', 'professional', 'certificate', '2273572', 'cybersecurity'] },
+        { id: 9, title: 'Node.js Development', category: 'technology', url: 'apis.html', description: 'Server-side JavaScript development with Express.js', keywords: ['nodejs', 'javascript', 'express', 'server', 'backend', 'development'] },
+        { id: 10, title: 'React Frontend', category: 'technology', url: 'tutorials.html', description: 'Modern React applications with hooks and components', keywords: ['react', 'frontend', 'javascript', 'components', 'hooks', 'ui'] },
+        { id: 11, title: 'Cloud Architecture', category: 'technology', url: 'index.html', description: 'AWS, Azure, and Google Cloud platform expertise', keywords: ['cloud', 'aws', 'azure', 'gcp', 'architecture', 'infrastructure', 'devops', 'devsecops'] },
+        { id: 12, title: 'Database Design', category: 'technology', url: 'apis.html', description: 'PostgreSQL, MongoDB, and database optimization', keywords: ['database', 'postgresql', 'mongodb', 'sql', 'nosql', 'optimization'] },
+        
+        // Programming Languages & Frameworks
+        { id: 24, title: 'Programming Languages', category: 'skill', url: 'about.html', description: 'Angular, React, C, C++, C#, Java, Kotlin, Objective-C, Perl, Python, Go, HTML, CSS, Shell, JavaScript, Swift', keywords: ['angular', 'react', 'c', 'c++', 'c#', 'java', 'kotlin', 'objective-c', 'perl', 'python', 'go', 'html', 'css', 'shell', 'javascript', 'swift', 'programming', 'languages', 'frameworks'] },
+        
+        // Operating Systems
+        { id: 25, title: 'Operating Systems', category: 'skill', url: 'about.html', description: 'Linux (RedHat/Debian), Unix, Mac, Android, iOS, Windows Server', keywords: ['linux', 'redhat', 'debian', 'unix', 'mac', 'android', 'ios', 'windows', 'server', 'operating', 'systems', 'os'] },
+        
+        // Databases
+        { id: 26, title: 'Databases', category: 'skill', url: 'about.html', description: 'SQL, MySQL, PostgreSQL, MongoDB, Elasticsearch', keywords: ['sql', 'mysql', 'postgresql', 'mongodb', 'elasticsearch', 'database', 'nosql', 'data', 'storage'] },
+        
+        // Cloud & DevOps
+        { id: 27, title: 'Cloud & DevOps', category: 'skill', url: 'about.html', description: 'AWS, Azure, Google Cloud, EC2, S3, NiFi, Kafka, Terraform, VPNs, Docker, Kubernetes, Microservices, Git, CI/CD, DevSecOps', keywords: ['aws', 'azure', 'google', 'cloud', 'ec2', 's3', 'nifi', 'kafka', 'terraform', 'vpn', 'docker', 'kubernetes', 'microservices', 'git', 'cicd', 'devsecops', 'devops', 'infrastructure', 'automation'] },
+        
+        // Computer Networking
+        { id: 28, title: 'Computer Networking', category: 'skill', url: 'about.html', description: 'OSI Model, Network Security Communication, OSPF, IGRP, EIGRP, BGP, VLAN, VRRP, InterVLAN Routing, STP, IPsec Tunneling, Load Balancers, Wireshark', keywords: ['osi', 'model', 'network', 'security', 'communication', 'ospf', 'igrp', 'eigrp', 'bgp', 'vlan', 'vrrp', 'intervlan', 'routing', 'stp', 'ipsec', 'tunneling', 'load', 'balancers', 'wireshark', 'networking', 'protocols'] },
+        
+        // Testing
+        { id: 29, title: 'Testing', category: 'skill', url: 'about.html', description: 'UI Testing, API Testing, White Box Testing, Black Box Testing, Unit Testing, Test Automation, SAST, DAST, User Acceptance Testing (UAT), Integration Testing, Regression Testing, Ansible', keywords: ['ui', 'testing', 'api', 'testing', 'white', 'box', 'black', 'box', 'unit', 'testing', 'test', 'automation', 'sast', 'dast', 'uat', 'user', 'acceptance', 'testing', 'integration', 'testing', 'regression', 'testing', 'ansible', 'qa', 'quality', 'assurance'] },
+        
+        // Software Development Lifecycle
+        { id: 30, title: 'Software Development Lifecycle', category: 'skill', url: 'about.html', description: 'SDLC, Scrum, Agile, JIRA, Confluence', keywords: ['sdlc', 'scrum', 'agile', 'jira', 'confluence', 'development', 'lifecycle', 'project', 'management', 'methodology'] },
+        
+        // Development Tools
+        { id: 31, title: 'Development Tools', category: 'skill', url: 'about.html', description: 'IntelliJ, PyCharm, StarUML, AutoCAD, PSpice, Xcode, Android Studio, Eclipse, NetBeans, Splunk, SwiftUI, Visio, Jupyter Notebook, MS Office', keywords: ['intellij', 'pycharm', 'staruml', 'autocad', 'pspice', 'xcode', 'android', 'studio', 'eclipse', 'netbeans', 'splunk', 'swiftui', 'visio', 'jupyter', 'notebook', 'ms', 'office', 'development', 'tools', 'ide'] },
+        
+        // Cloud Architecture
+        { id: 32, title: 'Cloud Architecture Models', category: 'skill', url: 'about.html', description: 'IaaS, PaaS, DaaS, SaaS, FaaS, VPC, SASE', keywords: ['iaas', 'paas', 'daas', 'saas', 'faas', 'vpc', 'sase', 'cloud', 'architecture', 'models', 'infrastructure', 'platform', 'service'] },
+        
+        // Security and Security Controls
+        { id: 33, title: 'Security and Security Controls', category: 'skill', url: 'about.html', description: 'RBAC, DAC, Gap Analysis, CVEs, Threat Modeling, Cyber Threat Intelligence, Metrics, KPIs, KPI Metrics, KPI Analysis, Log Data Analysis, API Security, Security as Code, Cloud Security, Security Testing, SOC, SOC2, FedRAMP, Web Application Security, RMF Process, Incident Response, IAM, Risk Management, PII, PHI, EDR, DLP, MDR, Change Management, Configuration Management, HIPAA, GDPR, CCPA, SLA, Root Cause Analysis, SIEM, SOAR', keywords: ['rbac', 'dac', 'gap', 'analysis', 'cves', 'threat', 'modeling', 'cyber', 'threat', 'intelligence', 'metrics', 'kpis', 'kpi', 'metrics', 'kpi', 'analysis', 'log', 'data', 'analysis', 'api', 'security', 'security', 'as', 'code', 'cloud', 'security', 'security', 'testing', 'soc', 'soc2', 'fedramp', 'web', 'application', 'security', 'rmf', 'process', 'incident', 'response', 'iam', 'risk', 'management', 'pii', 'phi', 'edr', 'dlp', 'mdr', 'change', 'management', 'configuration', 'management', 'hipaa', 'gdpr', 'ccpa', 'sla', 'root', 'cause', 'analysis', 'siem', 'soar', 'cybersecurity', 'controls', 'compliance'] },
+        
+        // Generative AI
+        { id: 34, title: 'Generative AI', category: 'skill', url: 'about.html', description: 'Windsurf, Claude, Copilot, ChatGPT, Gemini', keywords: ['windsurf', 'claude', 'copilot', 'chatgpt', 'gemini', 'generative', 'ai', 'artificial', 'intelligence', 'llm', 'language', 'model'] },
+        
+        // Projects and Tools
+        { id: 13, title: 'Metasploit Framework', category: 'project', url: 'tutorials.html', description: 'Penetration testing framework for security professionals', keywords: ['metasploit', 'penetration', 'testing', 'security', 'framework', 'cybersecurity'] },
+        { id: 14, title: 'OSQuery Monitoring', category: 'project', url: 'tutorials.html', description: 'SQL-powered operating system instrumentation and monitoring', keywords: ['osquery', 'monitoring', 'security', 'siem', 'instrumentation', 'sql'] },
+        { id: 15, title: 'Kubernetes Orchestration', category: 'project', url: 'tutorials.html', description: 'Container orchestration and microservices management', keywords: ['kubernetes', 'containers', 'orchestration', 'microservices', 'docker'] },
+        { id: 16, title: 'Terraform Infrastructure', category: 'project', url: 'tutorials.html', description: 'Infrastructure as code with Terraform and AWS provider', keywords: ['terraform', 'infrastructure', 'code', 'iac', 'aws', 'automation'] },
+        
+        // Security Topics
+        { id: 17, title: 'DEFCON Conference', category: 'security', url: 'index.html', description: 'Regular attendee at DEFCON security conference', keywords: ['defcon', 'conference', 'security', 'hacking', 'cybersecurity', 'networking'] },
+        { id: 18, title: 'Security Tools', category: 'security', url: 'tutorials.html', description: 'Collection of security tools and resources for developers', keywords: ['security', 'tools', 'devsecops', 'penetration', 'testing', 'vulnerability'] },
+        { id: 19, title: 'Network Security', category: 'security', url: 'about.html', description: 'Network security implementation and best practices', keywords: ['network', 'security', 'firewall', 'vpn', 'encryption', 'protocols'] },
+        
+        // Development Topics
+        { id: 20, title: 'Full Stack Development', category: 'development', url: 'about.html', description: 'End-to-end web application development', keywords: ['fullstack', 'full', 'stack', 'development', 'frontend', 'backend'] },
+        { id: 21, title: 'API Development', category: 'development', url: 'apis.html', description: 'RESTful API design and implementation', keywords: ['api', 'development', 'rest', 'endpoint', 'microservices'] },
+        { id: 22, title: 'Performance Optimization', category: 'development', url: 'tutorials.html', description: 'Application performance tuning and optimization', keywords: ['performance', 'optimization', 'tuning', 'caching', 'database'] },
+        { id: 23, title: 'DevSecOps Practices', category: 'development', url: 'about.html', description: 'Security-integrated DevOps practices with automated security scanning, compliance automation, and shift-left security', keywords: ['devsecops', 'devops', 'security', 'automation', 'cicd', 'compliance', 'shift-left', 'security-as-code'] }
+    ];
+    
+    const term = query.toLowerCase();
+    const results = searchIndex.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(term);
+      const descriptionMatch = item.description.toLowerCase().includes(term);
+      const keywordsMatch = item.keywords.some(keyword => keyword.toLowerCase().includes(term));
+      return titleMatch || descriptionMatch || keywordsMatch;
+    }).slice(0, 10); // Limit to top 10 results
+    
+    res.json({ success: true, results: results });
+  } catch (error) {
+    console.error('Agent search error:', error);
+    res.json({ success: true, results: [] }); // Return empty results on error
+  }
+});
+
+app.get('/api/agent-skills', (req, res) => {
+  try {
+    // Extract skills from about.html structure
+    const skills = [
+      {
+        category: 'Programming Languages & Frameworks',
+        skills: ['Angular', 'React', 'C', 'C++', 'C#', 'Java', 'Kotlin', 'Objective-C', 'Perl', 'Python', 'Go', 'HTML', 'CSS', 'Shell', 'JavaScript', 'Swift']
+      },
+      {
+        category: 'Operating Systems',
+        skills: ['Linux (RedHat/Debian)', 'Unix', 'Mac', 'Android', 'iOS', 'Windows Server']
+      },
+      {
+        category: 'Databases',
+        skills: ['SQL', 'MySQL', 'PostgreSQL', 'MongoDB', 'Elasticsearch']
+      },
+      {
+        category: 'Cloud & DevOps',
+        skills: ['AWS', 'Azure', 'Google Cloud', 'EC2', 'S3', 'NiFi', 'Kafka', 'Terraform', 'VPNs', 'Docker', 'Kubernetes', 'Microservices', 'Git', 'CI/CD', 'DevSecOps']
+      },
+      {
+        category: 'Computer Networking',
+        skills: ['OSI Model', 'Network Security Communication', 'OSPF', 'IGRP', 'EIGRP', 'BGP', 'VLAN', 'VRRP', 'InterVLAN Routing', 'STP', 'IPsec Tunneling', 'Load Balancers', 'Wireshark']
+      },
+      {
+        category: 'Testing',
+        skills: ['UI Testing', 'API Testing', 'White Box Testing', 'Black Box Testing', 'Unit Testing', 'Test Automation', 'SAST', 'DAST', 'UAT', 'Integration Testing', 'Regression Testing', 'Ansible']
+      },
+      {
+        category: 'Software Development Lifecycle',
+        skills: ['SDLC', 'Scrum', 'Agile', 'JIRA', 'Confluence']
+      },
+      {
+        category: 'Development Tools',
+        skills: ['IntelliJ', 'PyCharm', 'StarUML', 'AutoCAD', 'PSpice', 'Xcode', 'Android Studio', 'Eclipse', 'NetBeans', 'Splunk', 'SwiftUI', 'Visio', 'Jupyter Notebook', 'MS Office']
+      },
+      {
+        category: 'Cloud Architecture',
+        skills: ['IaaS', 'PaaS', 'DaaS', 'SaaS', 'FaaS', 'VPC', 'SASE']
+      },
+      {
+        category: 'Security and Security Controls',
+        skills: ['RBAC', 'DAC', 'Gap Analysis', 'CVEs', 'Threat Modeling', 'Cyber Threat Intelligence', 'Metrics', 'KPIs', 'KPI Analysis', 'Log Data Analysis', 'API Security', 'Security as Code', 'Cloud Security', 'Security Testing', 'SOC', 'SOC2', 'FedRAMP', 'Web Application Security', 'RMF Process', 'Incident Response', 'IAM', 'Risk Management', 'PII', 'PHI', 'EDR', 'DLP', 'MDR', 'Change Management', 'Configuration Management', 'HIPAA', 'GDPR', 'CCPA', 'SLA', 'Root Cause Analysis', 'SIEM', 'SOAR']
+      },
+      {
+        category: 'Generative AI',
+        skills: ['Windsurf', 'Claude', 'Copilot', 'ChatGPT', 'Gemini']
+      }
+    ];
+    
+    res.json({ success: true, skills: skills });
+  } catch (error) {
+    console.error('Agent skills error:', error);
+    res.json({ success: true, skills: [] });
+  }
+});
+
+app.get('/api/agent-experience', (req, res) => {
+  try {
+    const experience = [
+      {
+        company: 'National Security Agency (NSA)',
+        role: 'Senior Software Engineer',
+        description: 'Developing classified cybersecurity solutions and intelligence systems'
+      },
+      {
+        company: 'NASA',
+        role: 'Senior Software Engineer',
+        description: 'Building mission-critical systems for space exploration and scientific research'
+      },
+      {
+        company: 'Barracuda Networks',
+        role: 'Principal Engineer',
+        description: 'Developing enterprise security appliances and cloud-based threat protection systems'
+      }
+    ];
+    
+    res.json({ success: true, experience: experience });
+  } catch (error) {
+    console.error('Agent experience error:', error);
+    res.json({ success: true, experience: [] });
+  }
+});
+
+app.get('/api/agent-contact', (req, res) => {
+  try {
+    const contact = {
+      email: process.env.CONTACT_EMAIL || 'joshsylvia@yahoo.com',
+      phone: null,
+      linkedin: null
+    };
+    
+    res.json({ success: true, contact: contact });
+  } catch (error) {
+    console.error('Agent contact error:', error);
+    res.json({ success: true, contact: {} });
+  }
+});
+
 app.use(function(req, res) {
 	res.sendFile(__dirname + '/public/index.html');
 });

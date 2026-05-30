@@ -19,9 +19,11 @@
     <section class="hero-section">
         <div class="hero-content">
             <div class="hero-left">
-                <img src="images/tikal.jpg" alt="Tikal Ruins" class="tikal-image">
+                <img src="images/tikal2.jpg" alt="Tikal Ruins" class="tikal-image">
                 <div class="cta-buttons">
-                    <a href="about.html" class="cta-button primary">Learn More About Me</a>
+                    <a href="#story-section" class="cta-button story-button">My Story</a>
+                    <a href="#success-story" class="cta-button story-button">Technical Success Story</a>
+                    <a href="about.html" class="cta-button">Learn More About Me</a>
                     <a href="tutorials.html" class="cta-button">View My Tutorials</a>
                     <a href="contact.html" class="cta-button">Get In Touch</a>
                 </div>
@@ -50,6 +52,13 @@
             <h2 class="features-title">What I Do</h2>
             <div class="features-grid">
                 <div class="feature-card">
+                    <i class="fas fa-code feature-icon"></i>
+                    <h3 class="feature-title">Software Development</h3>
+                    <p class="feature-description">
+                        Creating robust applications with clean code, best practices, and cutting-edge technologies.
+                    </p>
+                </div>
+                <div class="feature-card">
                     <i class="fas fa-shield-alt feature-icon"></i>
                     <h3 class="feature-title">Cybersecurity</h3>
                     <p class="feature-description">
@@ -63,19 +72,12 @@
                         Designing scalable cloud solutions using AWS, Azure, and modern infrastructure practices.
                     </p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-code feature-icon"></i>
-                    <h3 class="feature-title">Software Development</h3>
-                    <p class="feature-description">
-                        Creating robust applications with clean code, best practices, and cutting-edge technologies.
-                    </p>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Story Section -->
-    <section class="story-section">
+    <section id="story-section" class="story-section">
         <div class="story-container">
             <h2 class="story-title">My Story</h2>
             <p class="story-content">
@@ -83,6 +85,12 @@
             </p>
             
             <div class="story-highlight">
+                <div class="video-container">
+                    <video controls class="story-video">
+                        <source src="videos/Engineering Abroad Guatemala 1080.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
                 <p>
                     One of my most meaningful experiences was leading an engineering project that brought potable water to a remote village outside Antigua, Guatemala. This humanitarian effort combined technical expertise with compassion, showing how technology can truly transform lives and communities in need.
                 </p>
@@ -94,33 +102,13 @@
         </div>
     </section>
 
-    <!-- AI Section -->
-    <section class="ai-section">
-        <div class="ai-container">
-            <h2 class="ai-title">AI & Automation Solutions</h2>
-            <p class="ai-description">
-                Leveraging cutting-edge artificial intelligence and machine learning technologies to build intelligent systems that solve complex problems. From natural language processing to computer vision, I create AI solutions that enhance productivity and drive innovation.
+    <!-- Technical Success Story Section -->
+    <section id="success-story" class="story-section">
+        <div class="story-container">
+            <h2 class="story-title">Technical Success Story</h2>
+            <p class="story-content">
+                <strong>Time-critical migration</strong> of 4 active servers under 2.5-month deadline. Resolved <strong>ATO compliance issues</strong>: retired EOL Python 2, CentOS, patched log4j. Chose <strong>Ubuntu</strong> over Rocky/Alma Linux for strong community and LTS support. Used <strong>Apache NiFi</strong> for traffic splitting during parallel testing. Completed cutover <strong>2 days ahead</strong> of hard deadline.
             </p>
-            <div class="ai-features">
-                <div class="ai-feature">
-                    <i class="fas fa-robot ai-icon"></i>
-                    <h3 class="ai-feature-title">Machine Learning</h3>
-                    <p class="ai-feature-description">Custom ML models for predictive analytics and automation</p>
-                </div>
-                <div class="ai-feature">
-                    <i class="fas fa-brain ai-icon"></i>
-                    <h3 class="ai-feature-title">Natural Language Processing</h3>
-                    <p class="ai-feature-description">Advanced NLP for text analysis and chatbot development</p>
-                </div>
-                <div class="ai-feature">
-                    <i class="fas fa-network-wired ai-icon"></i>
-                    <h3 class="ai-feature-title">MCP Integration</h3>
-                    <p class="ai-feature-description">Model Context Protocol integration for seamless AI workflows</p>
-                </div>
-            </div>
-            <div class="ai-cta">
-                <a href="ai.html" class="cta-button primary">Explore AI Solutions</a>
-            </div>
         </div>
     </section>
 
